@@ -1,0 +1,274 @@
+.red {
+	background: red;
+	opacity: 0.5;
+}
+
+.gold {
+	background: gold;
+	opacity: 0.5;
+}
+
+body {
+ -webkit-font-smoothing: antialiased;
+ font-family: 'Karla', Verdana, sans-serif;
+ font-weight: 400;
+ font-size: 18px;
+ background: rgba(255, 255, 255, 1);
+ color:      rgba(254, 102, 2,   1); /* orange */
+}
+
+a {
+ text-decoration: none; 
+ color: inherit;
+}
+
+a:hover {
+ text-decoration: none;
+ opacity: 0.5;
+ color: inherit;
+}
+
+a:visited {
+ text-decoration: none; 
+ color: inherit;
+}
+
+
+h1, h2, h3 {
+ font-weight: 700;
+}
+
+h2 {
+ font-size: 1.417em;
+ margin: 0 auto;
+ padding: 0;
+ width:80%;
+ max-width: 28em;
+ text-align: center;
+ text-transform: capitalize;
+}
+
+/*
+hr {
+ color:rgba(0,0,0,1);
+ size:1px;
+ width: 10%; 
+ border: solid 1px #313131;
+ border-top: none;
+ margin: 2.8em auto;
+}
+*/
+
+input {
+ clear:both;
+ background:none;
+ border: none;
+ border-bottom: solid #313131 1px;
+ display:block;
+ width: 60%;
+ font-size:1.8em;
+ text-align: center;
+ color: #fe2d04; 
+ outline: none;
+}
+
+input:focus::-webkit-input-placeholder 
+{
+ color: transparent;
+}
+
+input:active {
+ outline: none;
+}
+
+::-webkit-input-placeholder {
+ color: rgba(0,0,0,0.3);
+}
+:-moz-placeholder { /* Firefox 18- */
+ color: rgba(0,0,0,0.3); 
+}
+::-moz-placeholder {  /* Firefox 19+ */
+ color: rgba(0,0,0,0.3);  
+}
+:-ms-input-placeholder {  
+ color: rgba(0,0,0,0.3);  
+}
+
+
+/* Placement parameters */
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+
+/* Container styles */
+
+
+.main {
+ background: rgba(254, 102, 2,    1); /* orange */
+ color:      rgba(255, 255, 2255, 1);
+}
+
+.main a {
+ color:      rgba(255, 255, 2255, 1); /* orange */
+}
+
+.menu {
+ display: none;
+ height: 6em;
+ background: rgba(255, 255, 2255, 1);
+ color:      rgba(254, 102, 2,    1); /* orange */
+}
+
+.menu { 
+ height: 6.2em;
+}
+
+.menu-button { 
+ display: block;
+ height: 6.2em;
+ text-align: center;
+ padding-top: 0.8em;
+}
+
+.menu-button img {
+ width: auto;
+ height: 3.2em;
+}
+
+.menu-button p {
+ font-size: 0.8em;
+ font-weight: bold;
+ letter-spacing: 0.2em;
+ margin: 1.2em auto;
+}
+
+.menu-button a {
+ opacity: 0.5
+}
+/*
+.side-name {
+ margin: 3.4em auto;
+ letter-spacing: 0.6em;
+ opacity:  0.3;
+ font-weight: bold;
+}
+*/
+
+.panel-default-overlay-down{visibility:visible;opacity:1;-moz-transform:translateY(100%);-o-transform:translateY(100%);-webkit-transform:translateY(100%);transform:translateY(100%)}
+
+
+.button {
+ width: 4.6em;
+ height: 4.6em;
+ margin: 3.8em auto;
+}
+
+.button img {
+ width: 100%;
+ height: auto;
+}
+
+.sub-header {
+ border-bottom: none;
+ padding:0;
+}
+
+.event {
+ margin: 3.4em auto;
+}
+
+.event-details {
+ font-size: 1em;
+ width:100%;
+ text-align: center;
+ clear:both;
+ margin: 0 0 1em 0;
+}
+
+.event-venue-name {
+ width:100%;
+ text-align: center;
+ font-size: 1em;
+/* font-family: 'Gentium Book Basic', Georgia, serif;*/
+ clear:both;
+ margin: 1em 0 0 0;
+}
+
+.fb_iframe_widget iframe {
+ opacity: 0.1;
+}
+
+.fb_iframe_widget iframe:hover {
+ opacity: 1;
+}
+
+.week-box {
+ width: 100%;
+ margin: 4em 0 4em 0;
+ text-align: center;
+}
+
+.week {
+ display:inline-block;
+ width: 440px;
+ height: 90px;
+ margin: 0 auto;
+ padding:0;
+ text-align: center;
+}
+
+.week-button {
+ display:inline-block;
+}
+
+.week-item {
+/* font-family: 'Gentium Book Basic', Georgia, serif;*/
+ width: 48px;
+ height: 56px;
+ display:inline-block;
+
+ margin-top: 20px;
+ text-align: center;
+ font-size: 24px;
+ font-weight: bold;
+}
+
+.week-day {
+/* font-family: 'Open Sans', sans-serif;*/
+ display: block;
+ font-size: 12px;
+ font-weight: normal;
+ margin-top: 6px;
+}
+
+.week-letter {
+ display: none;
+}
+
+
+/* boostrap-slider */
+#ex1Slider .slider-selection {
+ background: #BABABA;
+}
+
+@media (max-width: 991px) {
+
+ .side {
+  display: none;
+ }
+
+ .menu {
+  display: inline;
+ }
+
+ .main {
+ 	margin-top: 6.2em;
+ }
+
+
+}
+
+
