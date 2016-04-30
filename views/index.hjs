@@ -1,237 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head -->
-  <!-- any other head content must come *after* these tags -->
+<html>
 
-  <title>{{ title }}</title>
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/sidebar.css"/>
+  </head>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Gentium+Basic&subset=latin,latin-ext"
-  rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Karla:700,400&subset=latin,latin-ext"
-  rel="stylesheet" type="text/css">
-
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/dashboard.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/styles.css" rel="stylesheet">
-
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>
-<body>
-
+<body class="nopadding">
   <!-- Fixed navbar -->
-  <nav class="navbar navbar-fixed-top">
+  <div class="navbar navbar-static navbar-fixed-top buttons">
+    <div class="container-fluid nopadding">
+        <button type="button" class="navbar-toggle toggle-left col-xs-3 nopadding" data-toggle="sidebar" data-target=".sidebar-left">
+          <img src="images/logo.svg">
+        </button>
 
-    <!-- DESKTOP -->
-    <div class="container nopadding">
-      <div class="row nopadding">
-        <div class="menu-button col-md-3 nopadding">
-
-          <!-- Image: About/Logo -->
-
-          <a class="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
-            <svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-              <title>Page 1@2x</title>
-              <desc>Created with Sketch.</desc>
-              <defs>
-                <path id="path-1" d="M0,0.775 L71.926,0.775 L71.926,72 L0,72 L0,0.775 Z"></path>
-              </defs>
-              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                <g id="screen2-copy-3" sketch:type="MSArtboardGroup" transform="translate(-221.000000, -19.000000)">
-                  <g id="Page-1" sketch:type="MSLayerGroup" transform="translate(221.000000, 19.000000)">
-                    <mask id="mask-2" sketch:name="Clip 2" fill="white">
-                      <use xlink:href="#path-1"></use>
-                    </mask>
-                    <g id="Clip-2"></g>
-                    <path d="M35.9629,69.4007 C17.9339,69.4007 3.2089,55.1747 2.6269,37.4727 L26.5179,37.4727 L26.5179,55.9107 L29.1179,55.9107 L29.1179,47.1667 L42.1799,47.1667 L42.1799,55.9107 L44.7789,55.9107 L44.7789,37.4727 L69.2989,37.4727 C68.7169,55.1747 53.9919,69.4007 35.9629,69.4007 L35.9629,69.4007 Z M29.1179,34.8737 L29.1179,20.1987 L35.6489,27.3067 L42.1799,20.1987 L42.1799,34.8737 L29.1179,34.8737 Z M29.1179,37.4727 L42.1799,37.4727 L42.1799,44.5677 L29.1179,44.5677 L29.1179,37.4727 Z M35.9629,3.3747 C53.8469,3.3747 68.4849,17.3697 69.2879,34.8737 L44.7789,34.8737 L44.7789,13.5287 L35.6489,23.4647 L26.5179,13.5287 L26.5179,34.8737 L2.6379,34.8737 C3.4409,17.3697 18.0799,3.3747 35.9629,3.3747 L35.9629,3.3747 Z M35.9629,0.7757 C16.1329,0.7757 -9.99999993e-05,16.7507 -9.99999993e-05,36.3877 C-9.99999993e-05,56.0237 16.1329,71.9997 35.9629,71.9997 C55.7929,71.9997 71.9259,56.0237 71.9259,36.3877 C71.9259,16.7507 55.7929,0.7757 35.9629,0.7757 L35.9629,0.7757 Z" id="Fill-1" fill="#FE6602" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
-                  </g>
-                </g>
-              </g>
-            </svg>
-          </a>
-
-          <!-- About -->
-
-          <div class="collapse" id="collapseExample3" >
-              Put a filter here
-          </div>
-        </div>
-        
-        <!-- Spacer -->
-
-        <div class="menu-button col-md-6 nopadding gold">
-        </div>
-
-        <div class="menu-button col-md-3 nopadding red">
-
-          <!-- Image: Filters-->
-
-          <a class="button" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
-            <svg width="71px" height="71px" viewBox="0 0 71 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
-                <title>Page 1</title>
-                <desc>Created with Sketch.</desc>
-                <defs>
-                    <path id="path-1" d="M0,0.263 L70.737,0.263 L70.737,71 L0,71"></path>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                    <g id="screen2-copy-3" sketch:type="MSArtboardGroup" transform="translate(-1653.000000, -21.000000)">
-                        <g id="Page-1" sketch:type="MSLayerGroup" transform="translate(1653.000000, 21.000000)">
-                            <g id="Group-3">
-                                <mask id="mask-2" sketch:name="Clip 2" fill="white">
-                                    <use xlink:href="#path-1"></use>
-                                </mask>
-                                <g id="Clip-2"></g>
-                                <path d="M35.3685,68.4185 C17.2895,68.4185 2.5815,53.7095 2.5815,35.6315 C2.5815,17.5535 17.2895,2.8445 35.3685,2.8445 C53.4475,2.8445 68.1555,17.5535 68.1555,35.6315 C68.1555,53.7095 53.4475,68.4185 35.3685,68.4185 M35.3685,0.2635 C15.8665,0.2635 -0.0005,16.1295 -0.0005,35.6315 C-0.0005,55.1335 15.8665,71.0005 35.3685,71.0005 C54.8705,71.0005 70.7375,55.1335 70.7375,35.6315 C70.7375,16.1295 54.8705,0.2635 35.3685,0.2635" id="Fill-1" fill="#FE6602" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
-                            </g>
-                            <path d="M41.2353,27.1549 C39.9473,27.1549 38.9003,26.1069 38.9003,24.8199 C38.9003,23.5329 39.9473,22.4849 41.2353,22.4849 C42.5233,22.4849 43.5703,23.5329 43.5703,24.8199 C43.5703,26.1069 42.5233,27.1549 41.2353,27.1549 L41.2353,27.1549 Z M56.7413,23.5199 L45.9743,23.5199 C45.3993,21.4319 43.5033,19.8849 41.2353,19.8849 C38.9673,19.8849 37.0713,21.4319 36.4963,23.5199 L13.9963,23.5199 L13.9963,26.1199 L36.4963,26.1199 C37.0713,28.2079 38.9673,29.7549 41.2353,29.7549 C43.5033,29.7549 45.3993,28.2079 45.9743,26.1199 L56.7413,26.1199 L56.7413,23.5199 Z" id="Fill-4" fill="#FE6602" sketch:type="MSShapeGroup"></path>
-                            <path d="M41.2353,51.2288 C39.9473,51.2288 38.9003,50.1808 38.9003,48.8938 C38.9003,47.6068 39.9473,46.5588 41.2353,46.5588 C42.5233,46.5588 43.5703,47.6068 43.5703,48.8938 C43.5703,50.1808 42.5233,51.2288 41.2353,51.2288 L41.2353,51.2288 Z M56.7413,47.5938 L45.9743,47.5938 C45.3993,45.5058 43.5033,43.9588 41.2353,43.9588 C38.9673,43.9588 37.0713,45.5058 36.4963,47.5938 L13.9963,47.5938 L13.9963,50.1938 L36.4963,50.1938 C37.0713,52.2818 38.9673,53.8288 41.2353,53.8288 C43.5033,53.8288 45.3993,52.2818 45.9743,50.1938 L56.7413,50.1938 L56.7413,47.5938 Z" id="Fill-6" fill="#FE6602" sketch:type="MSShapeGroup"></path>
-                            <path d="M27.1664,37.2216 C27.1664,35.9346 28.2144,34.8866 29.5014,34.8866 C30.7894,34.8866 31.8364,35.9346 31.8364,37.2216 C31.8364,38.5086 30.7894,39.5566 29.5014,39.5566 C28.2144,39.5566 27.1664,38.5086 27.1664,37.2216 L27.1664,37.2216 Z M13.9964,38.5216 L24.7624,38.5216 C25.3374,40.6096 27.2334,42.1566 29.5014,42.1566 C31.7704,42.1566 33.6664,40.6096 34.2404,38.5216 L56.7414,38.5216 L56.7414,35.9216 L34.2404,35.9216 C33.6664,33.8336 31.7704,32.2866 29.5014,32.2866 C27.2334,32.2866 25.3374,33.8336 24.7624,35.9216 L13.9964,35.9216 L13.9964,38.5216 Z" id="Fill-8" fill="#FE6602" sketch:type="MSShapeGroup"></path>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-
-          </a>
-
-          <!-- Filters -->
-
-          <div class="collapse" id="collapseExample4" >
-
-            <!-- Location: address input -->
-
-            
-            <input type="text" placeholder="Enter address..">
-            
-
-            <svg width="80%" height="62px" viewBox="0 0 315 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
-                <title>Group</title>
-                <desc>Created with Sketch.</desc>
-                <defs></defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                    <g id="screen2-copy-3" sketch:type="MSArtboardGroup" transform="translate(-1524.000000, -401.000000)">
-                        <g id="Group" sketch:type="MSLayerGroup" transform="translate(1520.000000, 394.000000)">
-                            <path d="M9.47426817,54.3 L311.108822,54.3" id="Line-Copy-6" stroke="#FE6602" stroke-width="2.6" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                            <rect id="Rectangle-5" fill="#FE6602" sketch:type="MSShapeGroup" x="65" y="51" width="180.221903" height="7.58829066"></rect>
-                            <path d="M54.382436,66.764872 C60.6687818,66.764872 65.764872,61.6687818 65.764872,55.382436 C65.764872,49.0960902 60.6687818,44 54.382436,44 C48.0960902,44 43,49.0960902 43,55.382436 C43,61.6687818 48.0960902,66.764872 54.382436,66.764872 Z" id="Oval-8" stroke="#FE6602" stroke-width="2.6" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-                            <path d="M256.382436,66.764872 C262.668782,66.764872 267.764872,61.6687818 267.764872,55.382436 C267.764872,49.0960902 262.668782,44 256.382436,44 C250.09609,44 245,49.0960902 245,55.382436 C245,61.6687818 250.09609,66.764872 256.382436,66.764872 Z" id="Oval-8-Copy" stroke="#FE6602" stroke-width="2.6" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-                            <text id="09:00" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="3.31184211" y="23">09:00</tspan>
-                            </text>
-                            <text id="22:00" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="255.499342" y="23">22:00</tspan>
-                            </text>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-
-            <!--
-            <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-            -->
-
-
-            <svg width="80%" height="139px" viewBox="0 0 305 139" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
-                <title>Calendar</title>
-                <desc>Created with Sketch.</desc>
-                <defs></defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                    <g id="screen2-copy-3" sketch:type="MSArtboardGroup" transform="translate(-1528.000000, -575.000000)">
-                        <g id="Group-2" sketch:type="MSLayerGroup" transform="translate(1529.000000, 570.000000)">
-                            <path d="M0.474268166,75.3 L302.108822,75.3" id="Line-Copy-7" stroke="#FE6602" stroke-width="2.6" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                            <text id="21" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="12.1125" y="120">21</tspan>
-                                <tspan x="15.02" y="149" font-size="20">M</tspan>
-                            </text>
-                            <text id="21" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="76.1125" y="120">21</tspan>
-                                <tspan x="82.49" y="149" font-size="20">T</tspan>
-                            </text>
-                            <text id="21" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="140.1125" y="120">21</tspan>
-                                <tspan x="142.55" y="149" font-size="20">W</tspan>
-                            </text>
-                            <text id="21" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="204.1125" y="120">21</tspan>
-                                <tspan x="210.49" y="149" font-size="20">T</tspan>
-                            </text>
-                            <text id="21" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="263.1125" y="120">21</tspan>
-                                <tspan x="269.26" y="149" font-size="20">F</tspan>
-                            </text>
-                            <text id="February" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="102.9125" y="23">February</tspan>
-                            </text>
-                            <circle id="Oval-18" fill="#FE6602" sketch:type="MSShapeGroup" cx="23.5" cy="75.5" r="5.5"></circle>
-                            <circle id="Oval-18-Copy-2" fill="#FE6602" sketch:type="MSShapeGroup" cx="275.5" cy="75.5" r="5.5"></circle>
-                            <circle id="Oval-18-Copy-4" fill="#FE6602" sketch:type="MSShapeGroup" cx="151.5" cy="75.5" r="5.5"></circle>
-                            <circle id="Oval-18-Copy-6" fill="#FE6602" sketch:type="MSShapeGroup" cx="215.5" cy="75.5" r="5.5"></circle>
-                            <circle id="Oval-18-Copy-5" fill="#FE6602" sketch:type="MSShapeGroup" cx="87.5" cy="75.5" r="5.5"></circle>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-
-
-            <svg width="80%" height="62px" viewBox="0 0 389 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
-                <title>showall</title>
-                <desc>Created with Sketch.</desc>
-                <defs></defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                    <g id="screen2-copy-3" sketch:type="MSArtboardGroup" transform="translate(-1492.000000, -825.000000)">
-                        <g id="showall" sketch:type="MSLayerGroup" transform="translate(1492.000000, 824.000000)">
-                            <text id="Show-all" sketch:type="MSTextLayer" font-family="Karla" font-size="25" font-weight="normal" sketch:alignment="middle" fill="#FE6602">
-                                <tspan x="153.025" y="62">Show all</tspan>
-                            </text>
-                            <path d="M0.5,1.5 L388.5,1.5" id="Line-Copy-10" stroke="#FE6602" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-
-
-          </div>
-        </div>
-
-      </div>
+        <button type="button" class="navbar-toggle toggle-right col-xs-3 nopadding" data-toggle="sidebar" data-target=".sidebar-right">
+          <img src="images/filters.svg">
+        </button>
     </div>
-    <!-- /DESKTOP -->
-
-  </nav>
-
-  <!-- MAIN LANE -->
-
-  <div class="container nopadding">
-    <div class="row nopadding">
-      <!-- Spacer -->
-
-      <div class="col-xs-0 col-md-3 nopadding">  
+  </div>
+  
+  <!-- Begin page content -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left -->
+      <div class="col-xs-12 col-sm-12 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show">
+        <div style="width:80%; margin:0 auto; font-size: 0.8em"> 
+          <strong>MOI HELSINKI</strong><br>
+          is a location-based event calendar for Helsinki area.  In its current implementation, it aggregates and visualizes events retrieved from the Facebook API. The default listing interface displays the current location of the user as the starting point to locate events of possible interest. The website provides additional sorting and filtering opportunities to adjust the listing in ways that are meaningful to the user.
+        </div>
+        <!--
+        <img src="images/about_box.svg" width="80%" style="margin-top:20%">
+        -->
       </div>
 
-      <!-- MAIN: Event list -->
-      
-      <div class="col-sm-12 col-md-6 nopadding main">
+      <!-- center -->
+      <div class="main col-md-6 col-md-offset-3">
+
+        <!-- Events -->
         <div id="events">
           {{#allEvents}}
           <div class="event">
@@ -246,29 +53,55 @@
             <p class="event-venue-name">
               {{venue_name}}
             </p>
+            <p class="event-venue-name">
+              {{latitude}}/{{longitude}}
+            </p>
           </div>
           {{/allEvents}}
         </div>
+
       </div>
 
-      <!-- Spacer -->
-
-      <div class="col-xs-0 col-md-3 nopadding">  
+      <!-- right -->
+      <div class="col-xs-12 col-sm-12 col-md-3 sidebar sidebar-right sidebar-animate sidebar-md-show">
+        <div style="width:80%; margin:0 auto; font-size: 0.8em"> 
+         <p>
+          <strong>Your latitude:</strong> <br>
+          <span id="yourLat"></span>
+         </p>
+         <p>
+          <strong>Your longitude:</strong> <br>
+          <span id="yourLon"></span>
+         </p>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- /MAIN LANE-->
-
-  </div>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
 </body>
+
+<!--         -->
+<!-- SCRIPTS -->
+<!--         -->
+
+<script src="js/socket.io.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/latlong.js"></script>
+<script>
+  var socket = io();
+  window.onload = function() {
+      socket.emit('position: ', {"lol"});
+    var startPos;
+    var geoSuccess = function(position) {
+      startPos = position;
+      socket.emit('position: ', position;
+
+      document.getElementById('yourLat').innerHTML = startPos.coords.latitude;
+      document.getElementById('yourLon').innerHTML = startPos.coords.longitude;
+    };
+    navigator.geolocation.getCurrentPosition(geoSuccess);
+  };
+</script>
+
 </html>
