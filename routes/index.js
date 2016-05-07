@@ -18,7 +18,8 @@ var events = []
 
 // We need these variables in order to manually pre-render the HTML for an output
 // Explained here: https://youtu.be/FrB8mxdWR7o?list=PLoYCgNOIyGAACzU6GliHJDp4kmOw3NFsh
-var template         = fs.readFileSync('./views/events.hjs', 'utf-8')
+var templatePath     = path.join(appRoot, 'views/events.hjs')
+var template         = fs.readFileSync( templatePath, 'utf-8')
 var compiledTemplate = Hogan.compile(template)
 
 // Make http server listen to the port 8080
@@ -131,9 +132,10 @@ var output = {
  findDistance: function (position) {
   var currentLocation = new LatLon(position.latitude, position.longitude);
   for (var i=0; i<output.events.length; i++){
-    var eventLocation         = new LatLon(output.events[i].latitude, output.events[i].longitude);
-    output.events[i].distance = currentLocation.distanceTo(eventLocation);
-    //console.log (output.events[i].distance);
+    var eventLocation              = new LatLon(output.events[i].latitude, output.events[i].longitude);
+    var distance                   = currentLocation.distanceTo(eventLocation);
+    output.events[i].distance      = distance;
+    output.events[i].distanceRound = parseFloat(distance).toFixed(2);
   }
  },
 
@@ -161,30 +163,26 @@ output.cashData();
 setInterval(function() { output.cashData(); }, 6000);
 
 
-// GET home page
-// Learn more https://youtu.be/FqMIyTH9wSg
-router.get('/', function(req, res, next) {
- res.render('index', { title: 'Moi Helsinki — event calendar', events: output.events });
-});
 
-module.exports = router;
+
+// SERVER-CLIENT COMMUNICATION
 
 io.on('connection', function(socket){
 
+  // User location recieved
   socket.on('position', function(position){
-  // console.log ("User location recieved");
-  output.findDistance(position);
+    output.findDistance(position);
   });
 
+  // Sort by user location
   socket.on('sort-distance', function(position){
-    // console.log ("Sort by user location");
     output.sortDistance();
     var render = compiledTemplate.render( {events: output.events} );
     socket.emit('sort-distance', render );
   });
 
+  // Sort by time
   socket.on('sort-time', function(position){
-    // console.log ("Sort by time");
     output.sort();
     var render = compiledTemplate.render( {events: output.events} );
     socket.emit('sort-time', render );
@@ -193,4 +191,10 @@ io.on('connection', function(socket){
 });
 
 
+// GET home page
+// Learn more https://youtu.be/FqMIyTH9wSg
+router.get('/', function(req, res, next) {
+ res.render('index', { title: 'Moi Helsinki — event calendar', events: output.events });
+});
 
+module.exports = router;

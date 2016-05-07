@@ -2,6 +2,7 @@
 <html>
 
   <head>
+    <title> {{title}} </title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/sidebar.css"/>
@@ -11,18 +12,18 @@
   <!-- Fixed navbar -->
   <div class="navbar navbar-static navbar-fixed-top buttons">
     <div class="container-fluid nopadding col-xs-12 col-sm-12 col-md-3">
-      <div class="navbar-container">
+      <div class="raw navbar-container">
 
-        <a type="button" class="navbar-toggle toggle-left  nopadding" data-toggle="sidebar" data-target=".sidebar-left">
-          <img src="images/logo.svg">
+        <a type="button" class="col-xs-4" data-toggle="sidebar" data-target=".sidebar-left">
+          <img src="images/logo.svg" class="button">
         </a>
 
-        <a id="button-time" style="margin-left: 2em;">
-          <img src="images/time.svg">
+        <a id="button-time" class="col-xs-4" >
+          <img src="images/preloader.svg" class="button spin">
         </a>
 
-        <a id="button-position" style="margin-left: 2em;">
-          <img src="images/preloader.svg" class="spin">
+        <a id="button-position" class="col-xs-4" >
+          <!-- -->
         </a>
      </div>
     </div>
@@ -35,7 +36,7 @@
       <div class="col-xs-12 col-sm-12 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show">
         <div style="width:80%; margin:0 auto; font-size: 0.8em"> 
           <strong>MOI HELSINKI</strong><br>
-          is a location-based event calendar for Helsinki area.  In its current implementation, it aggregates and visualizes events retrieved from the Facebook API. The default listing interface displays the current location of the user as the starting point to locate events of possible interest. The website provides additional sorting and filtering opportunities to adjust the listing in ways that are meaningful to the user.
+          is a location-based event calendar for Helsinki area.  In its current implementation, it aggregates and visualizes events retrieved from the Facebook API. The current location of the user as the starting point to locate events of possible interest.
         </div>
         <!--
         <img src="images/about_box.svg" width="80%" style="margin-top:20%">
@@ -50,7 +51,7 @@
           {{#events}}
           <div class="event">
             <p class="event-details">
-              {{#distance}}{{distance}} km | {{/distance}}{{venue_address}} | {{time}}
+              {{#distanceRound}}{{distanceRound}} km | {{/distanceRound}}{{venue_address}} | {{time}}
             </p>
             <h2 class="subheader">
               <a href="http://facebook.com/{{id}}" target="_blank">   
@@ -87,7 +88,8 @@
     var geoSuccess = function(position) {
       userPosition = {latitude: position.coords.latitude, longitude: position.coords.longitude};
       socket.emit('position', {latitude: userPosition.latitude, longitude: userPosition.longitude});
-      document.getElementById('button-position').innerHTML = "<img src='images/location.svg'>";
+      document.getElementById('button-position').innerHTML = '<img src="images/position.svg"  class="button">';
+      document.getElementById('button-time').innerHTML     = '<img src="images/time.svg"  class="button">';
     };
     navigator.geolocation.getCurrentPosition(geoSuccess);
   };
@@ -116,6 +118,6 @@
 
 </html>
 
-<!-- location.svg  // GPS by Alfredo Hernandez from the Noun Project  -->
+<!-- position.svg  // GPS by Alfredo Hernandez from the Noun Project  -->
 <!-- preloader.svg // loading by Parma from the Noun Project          -->
 <!-- time.svg      // clock by Federico Panzano from the Noun Project -->

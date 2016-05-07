@@ -231,7 +231,8 @@ var fbAPI = {
      venue_address: placeLocationStreet,
      latitude:      placeLocationLatitude,
      longitude:     placeLocationLongitude,
-     distance:      null, 
+     distance:      null,
+     distanceRound: null, 
      // price: "0-100$"
      // Pulling price from FB pages happened to be a challenge
     }
