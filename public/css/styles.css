@@ -131,6 +131,12 @@ input:active {
  text-align: left;
 }
 
+.navbar-container {
+  width: 80%;
+  margin: 2em auto;
+  font-size: 0.8em;
+}
+
 .navbar-toggle {
  height: 5.2em;
  padding-top: 0.4em;
@@ -232,10 +238,15 @@ input:active {
   padding-top:  5.2em;
  }
 
+.navbar-container {
+  margin: 0.6em auto;
+}
+
  .buttons {
   background: white;
   height: 5.2em;
  }
+
  .overlay {
   position: absolute;
   width: 100%;
@@ -243,6 +254,33 @@ input:active {
   background: white;
  }
 
+
 }
 
+
+/* Preloader */
+
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-o-keyframes spin {
+  from { -o-transform: rotate(0deg); }
+    to { -o-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spin {
+  -webkit-animation: spin 2s both linear infinite;
+  -moz-animation: spin 2s both linear infinite;
+  -o-animation: spin 2s both linear infinite;
+  animation: spin 2s both linear infinite;
+}
 

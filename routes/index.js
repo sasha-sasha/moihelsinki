@@ -1,24 +1,22 @@
 var express  = require('express')
 var router   = express.Router()
 
-var FB       = require('fb')
-var fs       = require('fs')
+var FB       = require('fb')         // Facebook
+var fs       = require('fs')         // File System
 var path     = require('path')
+var Hogan    = require('hogan.js')      // Templating module
 
+var LatLon   = require('mt-latlon'); // Latitude/longitude spherical geodesy formulae and scripts.
 
 var appRoot        = path.resolve(__dirname, '..')
 var eventsFilePath = path.join(appRoot, 'events.txt')
-var venuesFilePath = path.join(appRoot, 'venues.txt')
 
-var venues = []
 var events = []
 
-var errorCounter     = 0 //monitor for the venues that do not accept the call
-var emptyVenues      = 0 //monitor variable for venues with no events returned on request
-
-
-
-
+// We need these variables in order to manually pre-render the HTML for an output
+// Explained here: https://youtu.be/FrB8mxdWR7o?list=PLoYCgNOIyGAACzU6GliHJDp4kmOw3NFsh
+var template         = fs.readFileSync('./views/events.hjs', 'utf-8')
+var compiledTemplate = Hogan.compile(template)
 
 //Functions that deal with the file system on the server
 var fsCalls = {
@@ -88,7 +86,7 @@ var output = {
     output.filter(data);
    });  
  },
- 
+
  filter: function (data) {
   var check;
   var now = new Date();
@@ -120,6 +118,23 @@ var output = {
   return a;
  },
 
+ findDistance: function (position) {
+  var currentLocation = new LatLon(position.latitude, position.longitude);
+  for (var i=0; i<output.events.length; i++){
+    var eventLocation         = new LatLon(output.events[i].latitude, output.events[i].longitude);
+    output.events[i].distance = currentLocation.distanceTo(eventLocation);
+    //console.log (output.events[i].distance);
+  }
+ },
+
+ sortDistance: function () {
+  output.events.sort(function(a, b) {
+   var c = a.distance;
+   var d = b.distance;
+   return c-d;
+  });
+ },
+
  sort: function () {
   output.events = output.clearDoubles (output.events);
   output.events.sort(function(a, b) {
@@ -128,25 +143,18 @@ var output = {
    return c-d;
   });
   // console.log ("Output event list sorted out");
-  // console.log (" ");
-  // console.log (" ");
  },
 };
 
 //calling for the output variable generation
+output.cashData();
 setInterval(function() { output.cashData(); }, 6000);
 
 
 // GET home page
 // Learn more https://youtu.be/FqMIyTH9wSg
 router.get('/', function(req, res, next) {
- res.render('index', { title: 'Moi Helsinki — event calendar', allEvents: output.events });
-  /*
-  fsCalls.read (eventsFilePath,
-   function (data) { 
-    res.render('index', { title: 'Moi Helsinki', allEvents: data });
-   });
-  */
+ res.render('index', { title: 'Moi Helsinki — event calendar', events: output.events });
 });
 
 module.exports = router;
@@ -156,17 +164,32 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+var currentLocation;
+
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('position', function(position){
+  console.log ("User location recieved");
+  output.findDistance(position);
   });
+
+  socket.on('sort-distance', function(position){
+    console.log ("Sort by user location");
+    output.sortDistance();
+
+    var render = compiledTemplate.render( {events: output.events} );
+
+    socket.emit('sort-distance', render );
+
+  });
+
 });
 
-http.listen(3001, function(){
-  // console.log('listening on *:300');
+
+http.listen(8080, function(){
+console.log('listening on *:8080');
 });
 

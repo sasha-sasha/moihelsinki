@@ -230,7 +230,8 @@ var fbAPI = {
      venue_name:    placeName,
      venue_address: placeLocationStreet,
      latitude:      placeLocationLatitude,
-     longitude:     placeLocationLongitude, 
+     longitude:     placeLocationLongitude,
+     distance:      null, 
      // price: "0-100$"
      // Pulling price from FB pages happened to be a challenge
     }
@@ -252,8 +253,8 @@ var fbAPI = {
     if(a[i].id == a[j].id)
      a.splice(j--, 1);
    }
-  } 
-  // console.log ("Duplicates removed from the even list")
+  };
+   //console.log ("Duplicates removed from the even list")
   a = fbAPI.sort (a);
   return a;
  },

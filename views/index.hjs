@@ -10,14 +10,22 @@
 <body class="nopadding">
   <!-- Fixed navbar -->
   <div class="navbar navbar-static navbar-fixed-top buttons">
-    <div class="container-fluid nopadding">
-        <button type="button" class="navbar-toggle toggle-left col-xs-3 nopadding" data-toggle="sidebar" data-target=".sidebar-left">
+    <div class="container-fluid nopadding col-xs-12 col-sm-12 col-md-3">
+      <div class="navbar-container">
+        <a type="button" class="navbar-toggle toggle-left  nopadding" data-toggle="sidebar" data-target=".sidebar-left">
           <img src="images/logo.svg">
-        </button>
+        </a>
 
+        <a id="button-position" style="margin-left: 2em;">
+          <img src="images/preloader.svg" class="spin">
+        </a>
+     </div>
+
+<!--
         <button type="button" class="navbar-toggle toggle-right col-xs-3 nopadding" data-toggle="sidebar" data-target=".sidebar-right">
           <img src="images/filters.svg">
         </button>
+-->
     </div>
   </div>
   
@@ -36,14 +44,14 @@
       </div>
 
       <!-- center -->
-      <div class="main col-md-6 col-md-offset-3">
+      <div class="main col-md-8 col-md-offset-4">
 
         <!-- Events -->
         <div id="events">
-          {{#allEvents}}
+          {{#events}}
           <div class="event">
             <p class="event-details">
-              {{venue_address}} | {{time}}
+              {{#distance}}{{distance}} km | {{/distance}}{{venue_address}} | {{time}}
             </p>
             <h2 class="subheader">
               <a href="http://facebook.com/{{id}}" target="_blank">   
@@ -53,28 +61,20 @@
             <p class="event-venue-name">
               {{venue_name}}
             </p>
-            <p class="event-venue-name">
-              {{latitude}}/{{longitude}}
-            </p>
           </div>
-          {{/allEvents}}
+          {{/events}}
         </div>
 
       </div>
 
-      <!-- right -->
+      <!-- right 
       <div class="col-xs-12 col-sm-12 col-md-3 sidebar sidebar-right sidebar-animate sidebar-md-show">
         <div style="width:80%; margin:0 auto; font-size: 0.8em"> 
-         <p>
-          <strong>Your latitude:</strong> <br>
-          <span id="yourLat"></span>
-         </p>
-         <p>
-          <strong>Your longitude:</strong> <br>
-          <span id="yourLon"></span>
-         </p>
+
         </div>
       </div>
+      -->
+
     </div>
   </div>
 </body>
@@ -87,21 +87,31 @@
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/sidebar.js"></script>
-<script src="js/latlong.js"></script>
 <script>
-  var socket = io();
+  var socket = io( "http://localhost:8080");
+  var userPosition;
+  
   window.onload = function() {
-      socket.emit('position: ', {"lol"});
-    var startPos;
     var geoSuccess = function(position) {
-      startPos = position;
-      socket.emit('position: ', position;
-
-      document.getElementById('yourLat').innerHTML = startPos.coords.latitude;
-      document.getElementById('yourLon').innerHTML = startPos.coords.longitude;
+      userPosition = {latitude: position.coords.latitude, longitude: position.coords.longitude};
+      socket.emit('position', {latitude: userPosition.latitude, longitude: userPosition.longitude});
+      document.getElementById('button-position').innerHTML = "<img src='images/location.svg'>";
     };
     navigator.geolocation.getCurrentPosition(geoSuccess);
   };
+
+  $( "#button-position" ).click(function() {
+    if(userPosition) socket.emit('sort-distance', userPosition);
+  });
+
+  socket.on('sort-distance', function(events){
+    // Client side recieves pre-rendered sorted list of events from the server and embeds it into the page
+    document.getElementById('events').innerHTML = events;
+  });
+
 </script>
 
 </html>
+
+<!-- location.svg  // GPS by Alfredo Hernandez from the Noun Project -->
+<!-- preloader.svg // loading by Parma from the Noun Project -->
