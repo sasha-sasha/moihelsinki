@@ -289,4 +289,4 @@ setInterval(function() {
      venueLength = venues.length;
      fbAPI.init();                 // callback fbAPI.init() 
     })});
-}, 36000);
+}, 360000);

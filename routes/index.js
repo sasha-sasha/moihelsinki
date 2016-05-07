@@ -1,12 +1,15 @@
 var express  = require('express')
 var router   = express.Router()
 
-var FB       = require('fb')         // Facebook
-var fs       = require('fs')         // File System
-var path     = require('path')
-var Hogan    = require('hogan.js')      // Templating module
+var http = require('http').Server(router); // Plugging in Socket.io 
+var io = require('socket.io')(http);       // http://socket.io/get-started/chat/
 
-var LatLon   = require('mt-latlon'); // Latitude/longitude spherical geodesy formulae and scripts.
+var FB       = require('fb')               // Facebook
+var fs       = require('fs')               // File System
+var path     = require('path')
+var Hogan    = require('hogan.js')         // Templating module
+
+var LatLon   = require('mt-latlon');       // Latitude/longitude spherical geodesy formulae and scripts.
 
 var appRoot        = path.resolve(__dirname, '..')
 var eventsFilePath = path.join(appRoot, 'events.txt')
@@ -18,7 +21,14 @@ var events = []
 var template         = fs.readFileSync('./views/events.hjs', 'utf-8')
 var compiledTemplate = Hogan.compile(template)
 
-//Functions that deal with the file system on the server
+// Make http server listen to the port 8080
+http.listen(8080, function(){
+console.log('listening on *:8080');
+});
+
+
+
+// Functions that deal with the file system on the server
 var fsCalls = {
 
  // Delete duplicating elements in the array of objects (by the id attribute)
@@ -76,7 +86,7 @@ var fsCalls = {
 
 
 
-//Prepare the output for the webpage
+// Prepare the output for the webpage
 var output = {
  events: [],
  cashData: function () {
@@ -94,7 +104,7 @@ var output = {
   // console.log ("Output filter called on " + now);
   for (var i=0; i<data.length; i++)
    {
-    //Comparing date of the event with current time
+    // Comparing date of the event with current time
     check = time - (new Date(data[i].start_time)).getTime();
     if (check < 0)
      {
@@ -103,8 +113,8 @@ var output = {
    } output.sort ();
  },
 
- //Delete duplicating elements in the array of objects (by the id attribute)
- //and sorts out the array <-- get out into another function
+ // Delete duplicating elements in the array of objects (by the id attribute)
+ // and sorts out the array <-- get out into another function
  clearDoubles: function (array) {
   var a = array.concat();
   for(var i=0; i<a.length; ++i) {
@@ -146,7 +156,7 @@ var output = {
  },
 };
 
-//calling for the output variable generation
+// Calling for the output variable generation
 output.cashData();
 setInterval(function() { output.cashData(); }, 6000);
 
@@ -159,37 +169,28 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-
-var currentLocation;
-
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
-
 io.on('connection', function(socket){
+
   socket.on('position', function(position){
-  console.log ("User location recieved");
+  // console.log ("User location recieved");
   output.findDistance(position);
   });
 
   socket.on('sort-distance', function(position){
-    console.log ("Sort by user location");
+    // console.log ("Sort by user location");
     output.sortDistance();
-
     var render = compiledTemplate.render( {events: output.events} );
-
     socket.emit('sort-distance', render );
+  });
 
+  socket.on('sort-time', function(position){
+    // console.log ("Sort by time");
+    output.sort();
+    var render = compiledTemplate.render( {events: output.events} );
+    socket.emit('sort-time', render );
   });
 
 });
 
 
-http.listen(8080, function(){
-console.log('listening on *:8080');
-});
 

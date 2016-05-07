@@ -12,24 +12,23 @@
   <div class="navbar navbar-static navbar-fixed-top buttons">
     <div class="container-fluid nopadding col-xs-12 col-sm-12 col-md-3">
       <div class="navbar-container">
+
         <a type="button" class="navbar-toggle toggle-left  nopadding" data-toggle="sidebar" data-target=".sidebar-left">
           <img src="images/logo.svg">
+        </a>
+
+        <a id="button-time" style="margin-left: 2em;">
+          <img src="images/time.svg">
         </a>
 
         <a id="button-position" style="margin-left: 2em;">
           <img src="images/preloader.svg" class="spin">
         </a>
      </div>
-
-<!--
-        <button type="button" class="navbar-toggle toggle-right col-xs-3 nopadding" data-toggle="sidebar" data-target=".sidebar-right">
-          <img src="images/filters.svg">
-        </button>
--->
     </div>
   </div>
   
-  <!-- Begin page content -->
+  <!-- #page content -->
   <div class="container-fluid">
     <div class="row">
       <!-- left -->
@@ -43,7 +42,7 @@
         -->
       </div>
 
-      <!-- center -->
+      <!-- # events-container -->
       <div class="main col-md-8 col-md-offset-4">
 
         <!-- Events -->
@@ -66,14 +65,7 @@
         </div>
 
       </div>
-
-      <!-- right 
-      <div class="col-xs-12 col-sm-12 col-md-3 sidebar sidebar-right sidebar-animate sidebar-md-show">
-        <div style="width:80%; margin:0 auto; font-size: 0.8em"> 
-
-        </div>
-      </div>
-      -->
+      <!-- / events-container -->
 
     </div>
   </div>
@@ -104,8 +96,19 @@
     if(userPosition) socket.emit('sort-distance', userPosition);
   });
 
+  $( "#button-time" ).click(function() {
+    socket.emit('sort-time');
+  });
+
   socket.on('sort-distance', function(events){
-    // Client side recieves pre-rendered sorted list of events from the server and embeds it into the page
+    // Client side recieves pre-rendered sorted list of events from the server
+    // and embeds it into the page
+    document.getElementById('events').innerHTML = events;
+  });
+
+  socket.on('sort-time', function(events){
+    // Client side recieves pre-rendered sorted list of events from the server
+    // and embeds it into the page
     document.getElementById('events').innerHTML = events;
   });
 
@@ -113,5 +116,6 @@
 
 </html>
 
-<!-- location.svg  // GPS by Alfredo Hernandez from the Noun Project -->
-<!-- preloader.svg // loading by Parma from the Noun Project -->
+<!-- location.svg  // GPS by Alfredo Hernandez from the Noun Project  -->
+<!-- preloader.svg // loading by Parma from the Noun Project          -->
+<!-- time.svg      // clock by Federico Panzano from the Noun Project -->
